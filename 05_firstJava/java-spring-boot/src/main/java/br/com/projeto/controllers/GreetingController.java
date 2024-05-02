@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.projeto.Greeting;
-import br.com.projeto.service.GrettingService;
+import br.com.projeto.model.Greeting;
+import br.com.projeto.services.GrettingServices;
 
 @RestController
 public class GreetingController {
@@ -19,7 +19,7 @@ public class GreetingController {
 	private final AtomicLong counter = new AtomicLong();
 	
 	@Autowired
-	private GrettingService service;
+	private GrettingServices service;
 
 	@GetMapping
 	public Greeting greeting(@RequestParam(value = "name", defaultValue = "World")String name ) {

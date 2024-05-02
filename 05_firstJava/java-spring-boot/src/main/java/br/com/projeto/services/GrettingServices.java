@@ -1,4 +1,4 @@
-package br.com.projeto.service;
+package br.com.projeto.services;
 
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
@@ -6,40 +6,26 @@ import org.springframework.stereotype.Service;
 import br.com.projeto.exceptions.UnsupportedMathOperationException;
 
 @Service
-public class GrettingService {
+public class GrettingServices {
 
 	
 	public Double soma(String x, String y) {
-		valida(x);
-		valida(y);
-		
 		return convertToDouble(x) + convertToDouble(y);
 	}
 	
 	public Double sub(@NonNull String x, @NonNull String y) {
-		valida(x);
-		valida(y);
-		
 		return convertToDouble(x) - convertToDouble(y);
 	}
 	
 	public Double mult(@NonNull String x, @NonNull String y) {
-		valida(x);
-		valida(y);
-		
 		return convertToDouble(x) * convertToDouble(y);
 	}
 	
 	public Double div(@NonNull String x, @NonNull String y) {
-		valida(x);
-		valida(y);
-		
 		return convertToDouble(x) / convertToDouble(y);
 	}
 	
 	public Double raiz(@NonNull String x) {
-		valida(x);
-		
 		return Math.sqrt(convertToDouble(x));
 	}
 	
@@ -50,6 +36,7 @@ public class GrettingService {
 	}
 	
 	private Double convertToDouble(String valor) {
+		valida(valor);
 		if(valor == null) return 0D;
 		String number  = valor.replaceAll(",", ".");
 		if(isNumeric(number)) return Double.parseDouble(number);
