@@ -3,7 +3,7 @@ package br.com.projeto.services;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
-import br.com.projeto.exceptions.UnsupportedMathOperationException;
+import br.com.projeto.exceptions.ResourceNotFoundException;
 
 @Service
 public class GrettingServices {
@@ -31,7 +31,7 @@ public class GrettingServices {
 	
 	private void valida(String valor) {
 		if(!isNumeric(valor)) {
-			throw new UnsupportedMathOperationException("Favor passar parâmetro numérico!");
+			throw new ResourceNotFoundException("Favor passar parâmetro numérico!");
 		}
 	}
 	
