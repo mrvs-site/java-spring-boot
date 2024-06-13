@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,17 +18,22 @@ import br.com.projeto.data.vo.v1.PersonVO;
 import br.com.projeto.data.vo.v2.PersonVOV2;
 import br.com.projeto.services.PersonServices;
 import br.com.projeto.util.MediaType;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/api-person")
+@RequestMapping("/api/person")
+@Tag(name = "Pessoa", description = "Endpoints para Gerenciamento de Pessoa")
 public class PersonController {
 	
 	
 	@Autowired
 	private PersonServices service;
 
+	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping(value = "{id}", produces = {MediaType.JSON, MediaType.XML, MediaType.YML})
-	public PersonVO getPersonVO(@PathVariable(value = "id") String id ) {
+	@Operation(summary = "Procurar Pessoa", description = "Procurar Pessoa", tags = {"Person"})
+	public PersonVO getPersonVO(@PathVariable(value = "id") Long id ) {
 		return service.findById(id);
 	}
 	

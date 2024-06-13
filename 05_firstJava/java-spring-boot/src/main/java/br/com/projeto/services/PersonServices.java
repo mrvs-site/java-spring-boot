@@ -80,12 +80,12 @@ public class PersonServices {
 		repository.delete(PersonVO);
 	}
 	
-	public PersonVO findById(String id) {
+	public PersonVO findById(Long id) {
 		logger.info("---------------------------------------------------------");
 		logger.info("Método buscar PersonVO - ID:"+id);
 		logger.info("---------------------------------------------------------");
 		
-		var entity  = repository.findById(Long.valueOf(id)).orElseThrow(
+		var entity  = repository.findById(id).orElseThrow(
 				() -> new ResourceNotFoundException("Não encontrado!"));
 		PersonVO vo = DozerMapper.parseObject(entity, PersonVO.class);
 		
@@ -104,7 +104,7 @@ public class PersonServices {
 
 		var vo = DozerMapper.parseListObjects(repository.findAll(), PersonVO.class);
 		
-		vo.stream().forEach(v -> v.add(linkTo(methodOn(PersonController.class).getPersonVO(v.getKey().toString())).withSelfRel()));
+		vo.stream().forEach(v -> v.add(linkTo(methodOn(PersonController.class).getPersonVO(v.getKey())).withSelfRel()));
 		
 		return  vo; 
 		

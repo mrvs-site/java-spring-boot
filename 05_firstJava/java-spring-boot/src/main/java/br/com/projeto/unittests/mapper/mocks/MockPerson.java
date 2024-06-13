@@ -35,10 +35,10 @@ public class MockPerson {
     
     public Person mockEntity(Integer number) {
         Person person = new Person();
+        person.setId(number.longValue());
         person.setEndereco("Addres Test" + number);
         person.setFirstName("First Name Test" + number);
         person.setGender(((number % 2)==0) ? "Male" : "Female");
-        person.setId(number.longValue());
         person.setLastName("Last Name Test" + number);
         return person;
     }
