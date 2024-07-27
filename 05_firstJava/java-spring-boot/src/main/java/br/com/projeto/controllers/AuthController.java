@@ -26,7 +26,7 @@ public class AuthController {
 
 	@SuppressWarnings("rawtypes")
 	@Operation(summary = "Autenticação")
-	@PostMapping(value = "/signin")
+	@PostMapping(value = "/signin/v1")
 	public ResponseEntity signin(@RequestBody AccountCredentialsVO data) {
 
 		if (verificarNuloVazio(data))
@@ -63,7 +63,7 @@ public class AuthController {
 	}
 
 	private boolean verificarNuloVazio(AccountCredentialsVO data) {
-		return data == null || data.getUserName() == null || data.getUserName().isBlank() || data.getPassword() == null
+		return data == null || data.getUsername() == null || data.getUsername().isBlank() || data.getPassword() == null
 				|| data.getPassword().isBlank();
 	}
 

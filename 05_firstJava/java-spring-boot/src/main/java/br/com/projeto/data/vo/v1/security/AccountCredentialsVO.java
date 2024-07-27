@@ -3,6 +3,8 @@ package br.com.projeto.data.vo.v1.security;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class AccountCredentialsVO implements Serializable {
 
 	/**
@@ -19,11 +21,11 @@ public class AccountCredentialsVO implements Serializable {
 		this.password = password;
 	}
 
-	public String getUserName() {
+	public String getUsername() {
 		return username;
 	}
 
-	public void setUserName(String username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 

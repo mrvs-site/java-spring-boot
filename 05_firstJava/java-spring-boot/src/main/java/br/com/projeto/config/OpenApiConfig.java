@@ -15,10 +15,10 @@ public class OpenApiConfig {
 		return new OpenAPI()
 			.info(new Info()
 					.title("RESTFull API Java 21")
-					.version("v1")
+					.version("v2")
 					.description("Algumas API´s")
 					.termsOfService("")
-					.license(new License().name("Apache 2.0")
+					.license(new License().name("Apache - 2.0")
 					.url("")));
 	}
 	

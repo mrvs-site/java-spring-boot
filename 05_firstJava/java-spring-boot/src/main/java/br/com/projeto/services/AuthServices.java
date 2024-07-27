@@ -28,17 +28,17 @@ public class AuthServices {
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity signin(AccountCredentialsVO data) {
 		try {
-			var userName = data.getUserName();
+			var username = data.getUsername();
 			var password = data.getPassword();
-			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userName, password));
+			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 
-			var user = repository.findByUserName(userName);
+			var user = repository.findByUserName(username);
 			var tokenResponse = new TokenVO();
 			
 			if(user != null) {
-				tokenResponse = jwtTokenProvider.createAccessToken(userName, user.getRoles());
+				tokenResponse = jwtTokenProvider.createAccessToken(username, user.getRoles());
 			}else {
-				throw new UsernameNotFoundException("Usuário não encontrado !!! "+userName);
+				throw new UsernameNotFoundException("Usuário não encontrado !!! "+username);
 			}
 			
 			return ResponseEntity.ok(tokenResponse);
