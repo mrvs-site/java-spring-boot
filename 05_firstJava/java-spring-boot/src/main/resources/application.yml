@@ -12,8 +12,8 @@ security:
 spring:
   datasource:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/rest_spring?useTimeZone=true&serverTimeZone=UTC
-      username: root
+      url: jdbc:mysql://rest-spring.c3meaayusome.us-east-2.rds.amazonaws.com:3306/rest_spring?useTimeZone=true&serverTimeZone=UTC
+      username: docker
       password: admin123
   jpa:
     open-in-view: false
